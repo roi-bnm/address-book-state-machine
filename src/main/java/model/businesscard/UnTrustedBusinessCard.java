@@ -12,7 +12,7 @@ public class UnTrustedBusinessCard extends BusinessCard {
     }
 
     public void printStatus() {
-        state.printBusinessCardState();
+        state.printBusinessCardState(this);
     }
 
     @Override
