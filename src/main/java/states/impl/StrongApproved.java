@@ -1,10 +1,14 @@
 package states.impl;
 
 import model.businesscard.BusinessCard;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import states.BusinessCardState;
 import states.enums.State;
 
 public class StrongApproved implements BusinessCardState {
+    private static final Logger logger = LogManager.getLogger(StrongApproved.class);
+
     @Override
     public void doAction(BusinessCard businessCard) {
         // Passed strong verification. Last state. nothing to do.
@@ -12,17 +16,17 @@ public class StrongApproved implements BusinessCardState {
 
     @Override
     public void next(BusinessCard businessCard) {
-        System.out.println("Business card with ID: " + businessCard.getId() + " In final state - Strong Approved. no state to move to.");
+        logger.info("Business card with ID: " + businessCard.getId() + " In final state - Strong Approved. no state to move to.");
     }
 
     @Override
     public void previous(BusinessCard businessCard) {
-        System.out.println("Business card with ID: " + businessCard.getId() + " In final state - Strong Approved. no state to go back to.");
+        logger.info("Business card with ID: " + businessCard.getId() + " In final state - Strong Approved. no state to go back to.");
     }
 
     @Override
     public void printBusinessCardState(BusinessCard businessCard) {
-        System.out.println("Business card with ID:" + businessCard.getId() + " is in Strong Approved state");
+        logger.info("Business card with ID:" + businessCard.getId() + " is in Strong Approved state");
     }
 
     @Override

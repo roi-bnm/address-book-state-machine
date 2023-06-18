@@ -1,18 +1,22 @@
 package states.impl;
 
 import model.businesscard.BusinessCard;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import states.BusinessCardState;
 import states.enums.State;
 
 public class Unknown implements BusinessCardState {
+    private static final Logger logger = LogManager.getLogger(Unknown.class);
+
     @Override
     public void doAction(BusinessCard businessCard) {
         if(contactAddress()) {
-            System.out.println("Was able to contact address for business card with ID: " + businessCard.getId()
+            logger.info("Was able to contact address for business card with ID: " + businessCard.getId()
                     + " .moving to Pending Verification state");
             next(businessCard);
         } else {
-            System.out.println("Unable to contact address for businessCard with ID: " + businessCard.getId());
+            logger.info("Unable to contact address for businessCard with ID: " + businessCard.getId());
         }
 
     }
@@ -24,12 +28,12 @@ public class Unknown implements BusinessCardState {
 
     @Override
     public void previous(BusinessCard businessCard) {
-        System.out.println("Business card with ID: " + businessCard.getId() + " in first state - Unknown, can't go previous");
+        logger.info("Business card with ID: " + businessCard.getId() + " in first state - Unknown, can't go previous");
     }
 
     @Override
     public void printBusinessCardState(BusinessCard businessCard) {
-        System.out.println("Business card with ID:" + businessCard.getId() + " is in Unknown state");
+        logger.info("Business card with ID:" + businessCard.getId() + " is in Unknown state");
     }
 
     @Override

@@ -1,16 +1,22 @@
 import model.addressbook.AddressBook;
 import model.businesscard.TrustedBusinessCard;
 import model.businesscard.UnTrustedBusinessCard;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 public class Client {
+    private static final Logger logger = LogManager.getLogger(Client.class);
     static AddressBook addressBook = AddressBook.getAddressBook();
 
     public static void main(String[] args) {
-        System.out.println(" ********* Trusted business cards *********");
+        BasicConfigurator.configure();
+
+        logger.info(" ********* Trusted business cards *********");
         addTrustedBusinessCards();
-        System.out.println(" ********* UnTrusted business cards *********");
+        logger.info(" ********* UnTrusted business cards *********");
         addUnTrustedBusinessCards();
-        System.out.println(" ********* Address Book *********");
+        logger.info(" ********* Address Book *********");
         addressBook.printAddressBook();
     }
 
@@ -29,7 +35,7 @@ public class Client {
         unTrustedBC_PendingVerification.doAction();
         unTrustedBC_PendingVerification.printStatus();
 
-        System.out.println("******");
+        logger.info("******");
 
         UnTrustedBusinessCard unTrustedBC_StrongVerification = new UnTrustedBusinessCard(3, " untrusted 2", "Asher Barash 40");
         addressBook.addUnTrustedSource(unTrustedBC_StrongVerification);

@@ -3,9 +3,11 @@ package states.impl;
 import model.businesscard.BusinessCard;
 import states.BusinessCardState;
 import states.enums.State;
-
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 public class ManualApproved implements BusinessCardState {
 
+    private static final Logger logger = LogManager.getLogger(ManualApproved.class);
     /**
      * In case there was a request to un-verify the business card, we will move back the business card to the initial state - Known.
      * @param businessCard
@@ -19,7 +21,7 @@ public class ManualApproved implements BusinessCardState {
 
     @Override
     public void next(BusinessCard businessCard) {
-        System.out.println("Business card with ID: " + businessCard.getId() + " inside Manual Approved state. last state");
+        logger.info("Business card with ID: " + businessCard.getId() + " inside Manual Approved state. last state");
     }
 
     /**
@@ -28,14 +30,14 @@ public class ManualApproved implements BusinessCardState {
      */
     @Override
     public void previous(BusinessCard businessCard) {
-        System.out.println("Business card with ID: " + businessCard.getId() + " is being un-verified." +
+        logger.info("Business card with ID: " + businessCard.getId() + " is being un-verified." +
                 " moving the trusted business card to the initial state - Known.");
         businessCard.setState(new Known());
     }
 
     @Override
     public void printBusinessCardState(BusinessCard businessCard) {
-        System.out.println("Business card with ID:" + businessCard.getId() + " is in Manual Approved state");
+        logger.info("Business card with ID:" + businessCard.getId() + " is in Manual Approved state");
     }
 
     @Override

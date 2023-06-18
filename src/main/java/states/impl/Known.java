@@ -1,10 +1,14 @@
 package states.impl;
 
 import model.businesscard.BusinessCard;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import states.BusinessCardState;
 import states.enums.State;
 
 public class Known implements BusinessCardState {
+
+    private static final Logger logger = LogManager.getLogger(Known.class);
     private BusinessCardState stateToMoveTo = new ManualApproved();
 
     /**
@@ -17,12 +21,12 @@ public class Known implements BusinessCardState {
     @Override
     public void doAction(BusinessCard businessCard) {
         if(!manualVerification() && contactAddress()) {
-            System.out.println("Business card with ID: " + businessCard.getId() + " failed manual verification. second try of verification." +
+            logger.info("Business card with ID: " + businessCard.getId() + " failed manual verification. second try of verification." +
                     " Attempting to contact address and moving to Pending Approval state");
             stateToMoveTo = new PendingVerification();
             next(businessCard);
         } else {
-            System.out.println("Business card with ID: " + businessCard.getId() + " passed manual verification. moving to Manual Approved state");
+            logger.info("Business card with ID: " + businessCard.getId() + " passed manual verification. moving to Manual Approved state");
             next(businessCard);
         }
     }
@@ -34,12 +38,12 @@ public class Known implements BusinessCardState {
 
     @Override
     public void previous(BusinessCard businessCard) {
-        System.out.println("Business card with ID: " + businessCard.getId() + " in first state - known, can't go previous");
+        logger.info("Business card with ID: " + businessCard.getId() + " in first state - known, can't go previous");
     }
 
     @Override
     public void printBusinessCardState(BusinessCard businessCard) {
-        System.out.println("Business card with ID:" + businessCard.getId() + " is in Known state");
+        logger.info("Business card with ID:" + businessCard.getId() + " is in Known state");
     }
 
     /**

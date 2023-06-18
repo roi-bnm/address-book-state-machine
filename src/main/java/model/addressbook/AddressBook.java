@@ -4,13 +4,15 @@ import model.businesscard.BusinessCard;
 import model.businesscard.TrustedBusinessCard;
 import model.businesscard.UnTrustedBusinessCard;
 import model.enums.BusinessCardType;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import states.impl.Known;
 import states.impl.Unknown;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddressBook {
-
+    private static final Logger logger = LogManager.getLogger(AddressBook.class);
     private static AddressBook addressBook;
     private final List<BusinessCard> businessCards = new ArrayList<>();
 
@@ -41,7 +43,7 @@ public class AddressBook {
 
     public void printAddressBook() {
         businessCards.forEach(businessCard -> {
-            System.out.println("Business Card details: ID: " + businessCard.getId()
+            logger.info("Business Card details: ID: " + businessCard.getId()
                              + " , name: " + businessCard.getName()
                              + " , address: " + businessCard.getAddress()
                              + " , type: " + businessCard.getType().name()

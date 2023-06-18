@@ -2,10 +2,13 @@ package states.impl;
 
 import model.businesscard.BusinessCard;
 import model.enums.BusinessCardType;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import states.BusinessCardState;
 import states.enums.State;
 
 public class PendingVerification implements BusinessCardState {
+    private static final Logger logger = LogManager.getLogger(PendingVerification.class);
 
     /**
      * In case the business card passed strong verification we will move it to the last state - Strong Approved. <br>
@@ -24,20 +27,20 @@ public class PendingVerification implements BusinessCardState {
 
     @Override
     public void next(BusinessCard businessCard) {
-        System.out.println("Business card with ID: " + businessCard.getId() + " passed strong verification. moving to last state - Strong Approved");
+        logger.info("Business card with ID: " + businessCard.getId() + " passed strong verification. moving to last state - Strong Approved");
         businessCard.setState(new StrongApproved());
     }
 
     @Override
     public void previous(BusinessCard businessCard) {
-        System.out.println("Business card with ID: " + businessCard.getId() + " failed strong verification. " +
+        logger.info("Business card with ID: " + businessCard.getId() + " failed strong verification. " +
                 "Aborting and moving the untrusted business card to initial state - Unknown");
         businessCard.setState(new Unknown());
     }
 
     @Override
     public void printBusinessCardState(BusinessCard businessCard) {
-        System.out.println("Business card with ID:" + businessCard.getId() + " is in Pending Verification state");
+        logger.info("Business card with ID:" + businessCard.getId() + " is in Pending Verification state");
     }
     /**
         This method will be used to do the strong verification.
