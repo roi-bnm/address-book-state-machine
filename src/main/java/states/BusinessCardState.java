@@ -10,7 +10,7 @@ public interface BusinessCardState {
 
     public void previous(BusinessCard businessCard);
 
-    public void printBusinessCardState();
+    public void printBusinessCardState(BusinessCard businessCard);
 
     String getStateName();
 

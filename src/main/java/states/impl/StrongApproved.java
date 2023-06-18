@@ -21,8 +21,8 @@ public class StrongApproved implements BusinessCardState {
     }
 
     @Override
-    public void printBusinessCardState() {
-        System.out.println("Current state is Strong Approved");
+    public void printBusinessCardState(BusinessCard businessCard) {
+        System.out.println("Business card with ID:" + businessCard.getId() + " is in Strong Approved state");
     }
 
     @Override

@@ -19,7 +19,7 @@ public class ManualApproved implements BusinessCardState {
 
     @Override
     public void next(BusinessCard businessCard) {
-        System.out.println("Business card with ID: " + businessCard.getId() + " inside manual approved. last state");
+        System.out.println("Business card with ID: " + businessCard.getId() + " inside Manual Approved state. last state");
     }
 
     /**
@@ -34,8 +34,8 @@ public class ManualApproved implements BusinessCardState {
     }
 
     @Override
-    public void printBusinessCardState() {
-        System.out.println("Current state is Manual Approved");
+    public void printBusinessCardState(BusinessCard businessCard) {
+        System.out.println("Business card with ID:" + businessCard.getId() + " is in Manual Approved state");
     }
 
     @Override

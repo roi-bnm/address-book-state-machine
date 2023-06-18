@@ -36,8 +36,8 @@ public class PendingVerification implements BusinessCardState {
     }
 
     @Override
-    public void printBusinessCardState() {
-        System.out.println("Current state is PendingVerification");
+    public void printBusinessCardState(BusinessCard businessCard) {
+        System.out.println("Business card with ID:" + businessCard.getId() + " is in Pending Verification state");
     }
     /**
         This method will be used to do the strong verification.

@@ -28,8 +28,8 @@ public class Unknown implements BusinessCardState {
     }
 
     @Override
-    public void printBusinessCardState() {
-        System.out.println("Current state is Unknown");
+    public void printBusinessCardState(BusinessCard businessCard) {
+        System.out.println("Business card with ID:" + businessCard.getId() + " is in Unknown state");
     }
 
     @Override
