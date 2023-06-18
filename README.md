@@ -17,7 +17,7 @@ I've used the state pattern for implementation.<br>
 #### states - holds all the states in the system and their logic
 
     BusinessCardState - the state interface that holds the methods to be implemented by the concrete states. 
-    5 states that implemets the state interface with their logic.
+    impl - holds the 5 states that implemets the state interface with their logic.
 
 #### Client - main method that adds the business cards and move their states.
 
