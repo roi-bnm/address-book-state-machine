@@ -1,0 +1,11 @@
+The condition D, that says that a trusted business card can never become an untrusted business card makes a flaw in the diagram.
+The flaw is that a trusted business card can be stuck on Pending Verification state.
+In case strong verification is failed for a trusted business card, it stays in the Pending Verification state without
+the ability to go back to the initial state.
+
+In order to fix the flaw, I'm suggesting to add Abort action also for the trusted business card which will move
+the trusted business card state back to the initial state - Known
+(adding an Abort arrow from Pending Verification state to Known state).
+
+In the Pending Verification state, in case the strong verification failed, we will check the type of the business card
+and call Abort which will move the business card to the previous state accordingly.
