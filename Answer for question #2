@@ -1,4 +1,4 @@
-The condition D, that says that a trusted business card can never become an untrusted business card makes a flaw in the diagram.
+The condition D, that says that a known business card can never become an unknown business card makes a flaw in the diagram.
 The flaw is that a trusted business card can be stuck on Pending Verification state.
 In case strong verification is failed for a trusted business card, it stays in the Pending Verification state without
 the ability to go back to the initial state.
