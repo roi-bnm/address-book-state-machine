@@ -5,7 +5,7 @@ import states.impl.Unknown;
 
 public class UnTrustedBusinessCard extends BusinessCard {
 
-    private BusinessCardState state = new Unknown();
+    private BusinessCardState state;
 
     public UnTrustedBusinessCard(long id, String name, String address) {
         super(id, name, address);

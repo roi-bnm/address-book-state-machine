@@ -3,13 +3,20 @@ package tests;
 import model.addressbook.AddressBook;
 import model.businesscard.TrustedBusinessCard;
 import model.businesscard.UnTrustedBusinessCard;
+import org.apache.log4j.BasicConfigurator;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import states.enums.State;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AddressBookStateTests {
 
-    AddressBook addressBook = AddressBook.getAddressBook();
+    private static final AddressBook addressBook = AddressBook.getAddressBook();
+
+    @BeforeAll
+    static void setUp() {
+        BasicConfigurator.configure();
+    }
 
     @Test
     void testTrustedBCTransitionToManualApprovedState() {

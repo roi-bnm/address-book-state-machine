@@ -14,7 +14,7 @@ public class PendingVerification implements BusinessCardState {
      * In case the business card passed strong verification we will move it to the last state - Strong Approved. <br>
      * In case the strong verification failed, we will check if this business card is untrusted one and do an Abort if it is
      * (Which will move it back to the initial state Unknown).
-     * @param businessCard
+     * @param businessCard - current processed business card
      */
     @Override
     public void doAction(BusinessCard businessCard) {
@@ -40,7 +40,7 @@ public class PendingVerification implements BusinessCardState {
 
     @Override
     public void printBusinessCardState(BusinessCard businessCard) {
-        logger.info("Business card with ID:" + businessCard.getId() + " is in Pending Verification state");
+        logger.info("Business card with ID: " + businessCard.getId() + " is in Pending Verification state");
     }
     /**
         This method will be used to do the strong verification.
@@ -54,7 +54,7 @@ public class PendingVerification implements BusinessCardState {
 
     /**
      * This method will abort the flow and will move the business card to the initial state - Unknown.
-     * @param businessCard
+     * @param businessCard - current processed business card
      */
     private void abort(BusinessCard businessCard) {
         previous(businessCard);

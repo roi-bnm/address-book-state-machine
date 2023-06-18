@@ -50,8 +50,4 @@ public class AddressBook {
                              + " , current state: " + businessCard.getState().getStateName());
         });
     }
-
-    public List<BusinessCard> getBusinessCards() {
-        return businessCards;
-    }
 }

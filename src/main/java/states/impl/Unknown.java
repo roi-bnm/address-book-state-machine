@@ -9,6 +9,11 @@ import states.enums.State;
 public class Unknown implements BusinessCardState {
     private static final Logger logger = LogManager.getLogger(Unknown.class);
 
+    /**
+     * In case we are able to contact address then we will move the business card to the next state - Pending Verification.<br>
+     * In case not, the business card will stay at the initial state Unknown
+     * @param businessCard - current processed business card
+     */
     @Override
     public void doAction(BusinessCard businessCard) {
         if(contactAddress()) {
@@ -33,7 +38,7 @@ public class Unknown implements BusinessCardState {
 
     @Override
     public void printBusinessCardState(BusinessCard businessCard) {
-        logger.info("Business card with ID:" + businessCard.getId() + " is in Unknown state");
+        logger.info("Business card with ID: " + businessCard.getId() + " is in Unknown state");
     }
 
     @Override

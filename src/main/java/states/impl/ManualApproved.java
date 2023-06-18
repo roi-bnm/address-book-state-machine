@@ -10,7 +10,7 @@ public class ManualApproved implements BusinessCardState {
     private static final Logger logger = LogManager.getLogger(ManualApproved.class);
     /**
      * In case there was a request to un-verify the business card, we will move back the business card to the initial state - Known.
-     * @param businessCard
+     * @param businessCard - current processed business card
      */
     @Override
     public void doAction(BusinessCard businessCard) {
@@ -26,7 +26,7 @@ public class ManualApproved implements BusinessCardState {
 
     /**
      * This method will un-verify the business card and move it back to the initial state - Known
-     * @param businessCard
+     * @param businessCard - current processed business card
      */
     @Override
     public void previous(BusinessCard businessCard) {
@@ -37,7 +37,7 @@ public class ManualApproved implements BusinessCardState {
 
     @Override
     public void printBusinessCardState(BusinessCard businessCard) {
-        logger.info("Business card with ID:" + businessCard.getId() + " is in Manual Approved state");
+        logger.info("Business card with ID: " + businessCard.getId() + " is in Manual Approved state");
     }
 
     @Override

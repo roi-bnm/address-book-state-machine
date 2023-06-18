@@ -16,7 +16,7 @@ public class Known implements BusinessCardState {
      * If we were able to contact the address,
      * then, we'll move the business card to Pending Verification state.<br>
      * In case manual verification passed, then we will move the business card to Manual Approved state.
-     * @param businessCard
+     * @param businessCard - current processed business card
      */
     @Override
     public void doAction(BusinessCard businessCard) {
@@ -43,7 +43,7 @@ public class Known implements BusinessCardState {
 
     @Override
     public void printBusinessCardState(BusinessCard businessCard) {
-        logger.info("Business card with ID:" + businessCard.getId() + " is in Known state");
+        logger.info("Business card with ID: " + businessCard.getId() + " is in Known state");
     }
 
     /**

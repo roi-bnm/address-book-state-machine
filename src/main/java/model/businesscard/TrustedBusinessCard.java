@@ -5,7 +5,7 @@ import states.impl.Known;
 
 public class TrustedBusinessCard extends BusinessCard {
 
-    private BusinessCardState state = new Known();
+    private BusinessCardState state;
 
     public TrustedBusinessCard(long id, String name, String address) {
         super(id, name, address);
